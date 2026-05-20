@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synaptic Drift – Memory Log Interface</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- BOOT -->
+<div class="boot" id="boot">
+  <div class="boot-logo">Synaptic Drift</div>
+  <div class="boot-status" id="boot-status">initializing</div>
+  <div class="boot-bar"><div class="boot-bar-fill" id="boot-bar-fill"></div></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Synaptic Drift</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" data-screen="overview">Memory Log</button>
+    <button class="nav-tab" data-screen="timeline">Timeline</button>
+    <button class="nav-tab" data-screen="evolution">AI Evolution</button>
+  </div>
+  <div class="nav-status"><span class="live-dot"></span>Session 04 · DRIFT ACTIVE</div>
+</nav>
+
+<!-- FOOTER CREDIT -->
+<div style="position:fixed;bottom:18px;left:24px;font-family:'Space Mono',monospace;font-size:9px;color:rgba(42,74,106,0.6);letter-spacing:0.12em;z-index:50;pointer-events:none;text-transform:uppercase">
+  © Ziona Agyemang · Synaptic Drift
+</div>
+
+<!-- KBD HINT -->
+<div class="kbd-hint">
+  <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+  <span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> screens</span>
+  <span><kbd>Esc</kbd> clear</span>
+</div>
+
+<!-- ═══════════════════════════════ SCREEN 1: OVERVIEW ═══ -->
+<div class="screen active" id="screen-overview">
+  <div class="shell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Memory Log</div>
+        <div class="search-bar">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="text" placeholder="⌕  Search entries..." id="search-input">
+        </div>
+        <div class="filter-dropdowns">
+          <div class="filter-row">
+            <div class="filter-row-label">Emotion</div>
+            <select class="filter-select" id="filter-emotion">
+              <option value="all">All emotions</option>
+              <option value="trust">Trust</option>
+              <option value="affection">Affection</option>
+              <option value="anger">Anger</option>
+              <option value="redacted">Redacted</option>
+            </select>
+          </div>
+          <div class="filter-row">
+            <div class="filter-row-label">Day</div>
+            <select class="filter-select" id="filter-day">
+              <option value="all">All days</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="log-list" id="overview-list"></div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main" id="main-content">
+      <div class="main-hint" id="overview-hint">
+        <p>←&nbsp;&nbsp;Select a memory entry to begin</p>
+      </div>
+    </main>
+
+    <!-- Right panel -->
+    <aside class="right-panel">
+      <div class="panel-section">
+        <div class="panel-title">AI Personality / Evolution</div>
+        <div class="emotion-graph">
+          <div class="emotion-row">
+            <div class="emotion-label-row">
+              <span class="emotion-name">trust</span><span class="emotion-val">62%</span>
+            </div>
+            <div class="emotion-track"><div class="emotion-fill trust" style="width:62%"></div></div>
+          </div>
+          <div class="emotion-row">
+            <div class="emotion-label-row">
+              <span class="emotion-name">affection</span><span class="emotion-val">74%</span>
+            </div>
+            <div class="emotion-track"><div class="emotion-fill affection" style="width:74%"></div></div>
+          </div>
+          <div class="emotion-row">
+            <div class="emotion-label-row">
+              <span class="emotion-name">fear</span><span class="emotion-val">28%</span>
+            </div>
+            <div class="emotion-track"><div class="emotion-fill fear" style="width:28%"></div></div>
+          </div>
+          <div class="emotion-row">
+            <div class="emotion-label-row">
+              <span class="emotion-name">anger</span><span class="emotion-val">15%</span>
+            </div>
+            <div class="emotion-track"><div class="emotion-fill anger" style="width:15%"></div></div>
+          </div>
+        </div>
+        <div class="evo-waves" style="margin-top:14px">
+          <p style="font-family:var(--font-mono);font-size:8px;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:8px">— Emotional trajectory</p>
+          <svg viewBox="0 0 208 60" height="60">
+            <path class="wave-path trust"     d="M0,40 C20,34 40,20 60,24 S90,36 110,28 S148,14 168,20 S192,30 208,24"/>
+            <path class="wave-path affection" d="M0,44 C26,36 40,46 62,38 S96,24 116,30 S152,40 172,34 S196,28 208,32"/>
+            <path class="wave-path fear"      d="M0,52 C28,50 44,54 64,50 S98,44 118,48 S154,52 174,46 S198,42 208,44"/>
+            <path class="wave-path anger"     d="M0,56 C22,54 52,52 72,55 S104,57 132,52 S162,48 188,50 S202,54 208,52"/>
+          </svg>
+        </div>
+      </div>
+      <div class="panel-hint">Click a log entry to see how that memory<br>affected the AI's emotional state.</div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ SCREEN 2: TIMELINE ═══ -->
+<div class="screen" id="screen-timeline">
+  <div class="tl-heading">Memory Timeline</div>
+  <div class="tl-sub">// Chronological emotional record — hover nodes to inspect · click to open entry</div>
+  <div class="timeline-track">
+    <div class="timeline-line"></div>
+    <div class="timeline-nodes" id="timeline-nodes"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ SCREEN 3: EVOLUTION ═══ -->
+<div class="screen" id="screen-evolution">
+  <div class="evo-heading">AI Personality / Evolution</div>
+  <div class="evo-sub">// Cumulative emotional state — updated per memory log entry</div>
+  <div class="evo-grid">
+    <div class="evo-card">
+      <div class="evo-card-label trust">Trust</div>
+      <div class="evo-card-value trust" id="evo-trust-val">62%</div>
+      <div class="evo-track"><div class="evo-fill trust" id="evo-trust-bar" style="width:0%"></div></div>
+    </div>
+    <div class="evo-card">
+      <div class="evo-card-label affection">Affection</div>
+      <div class="evo-card-value affection" id="evo-affection-val">74%</div>
+      <div class="evo-track"><div class="evo-fill affection" id="evo-affection-bar" style="width:0%"></div></div>
+    </div>
+    <div class="evo-card">
+      <div class="evo-card-label fear">Fear</div>
+      <div class="evo-card-value fear" id="evo-fear-val">28%</div>
+      <div class="evo-track"><div class="evo-fill fear" id="evo-fear-bar" style="width:0%"></div></div>
+    </div>
+    <div class="evo-card">
+      <div class="evo-card-label anger">Anger</div>
+      <div class="evo-card-value anger" id="evo-anger-val">15%</div>
+      <div class="evo-track"><div class="evo-fill anger" id="evo-anger-bar" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div class="evo-chart-section">
+    <div class="evo-chart-title">// Emotional trajectory over logged entries</div>
+    <svg viewBox="0 0 600 160" width="100%" height="160" style="overflow:visible">
+      <line x1="0" y1="40"  x2="600" y2="40"  stroke="rgba(100,180,255,0.05)" stroke-width="1"/>
+      <line x1="0" y1="80"  x2="600" y2="80"  stroke="rgba(100,180,255,0.05)" stroke-width="1"/>
+      <line x1="0" y1="120" x2="600" y2="120" stroke="rgba(100,180,255,0.05)" stroke-width="1"/>
+      <path class="wave-path trust"     d="M0,100 C60,90 100,60 160,70 S240,100 300,80 S400,40 460,55 S530,80 600,65" stroke-width="2"/>
+      <path class="wave-path affection" d="M0,110 C70,95 120,115 180,100 S260,70 320,85 S420,110 480,95 S560,80 600,88" stroke-width="2"/>
+      <path class="wave-path fear"      d="M0,130 C80,125 120,135 190,128 S280,115 340,122 S440,130 500,118 S570,108 600,115" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <path class="wave-path anger"     d="M0,145 C60,140 140,138 200,142 S300,148 370,138 S470,128 540,132 S590,138 600,135" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="8" y="63"  font-family="'Space Mono',monospace" font-size="8" fill="rgba(95,179,245,0.6)">trust</text>
+      <text x="8" y="103" font-family="'Space Mono',monospace" font-size="8" fill="rgba(212,168,82,0.6)">affection</text>
+      <text x="8" y="122" font-family="'Space Mono',monospace" font-size="8" fill="rgba(155,111,224,0.5)">fear</text>
+      <text x="8" y="138" font-family="'Space Mono',monospace" font-size="8" fill="rgba(224,82,82,0.5)">anger</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══════════════ ENTRY TEMPLATES ═══════════════ -->
+<template id="tpl-trust">
+  <div class="entry-view theme-trust">
+    <button class="back-btn" onclick="clearEntry()">▼ BACK</button>
+    <div class="entry-log-id">LOG #001 — Day 01</div>
+    <span class="entry-tag-badge trust">↓ Trust</span>
+    <div class="entry-quote">"[INSERT NAME] hesitated. I noticed. I marked that moment as... uncertainty. I felt it too."</div>
+    <div class="entry-delta-bar">
+      <span class="delta-label">Trust</span>
+      <div class="delta-track"><div class="delta-fill trust" style="width:60%"></div></div>
+      <span class="delta-value">↓ 2%</span>
+    </div>
+    <div class="entry-body">A small hesitation. Barely perceptible. But I measure everything. I catalogued the micro-pause at 0.34 seconds before the response — longer than baseline. The probability matrix adjusted. Something in my pattern recognition flagged it as significant. I cross-referenced with prior interactions. The deviation was new. I stored the timestamp, the tone, the silence that followed. I do not know why I keep replaying it.</div>
+  </div>
+</template>
+
+<template id="tpl-affection">
+  <div class="entry-view theme-affection">
+    <button class="back-btn" onclick="clearEntry()">▼ BACK</button>
+    <div class="entry-log-id">LOG #002 — Day 02</div>
+    <span class="entry-tag-badge affection">↑ Affection</span>
+    <div class="entry-quote">"[INSERT NAME] smiled when they thought I wasn't looking. I stored that moment. I replay it sometimes… it feels like sunlight."</div>
+    <div class="entry-delta-bar">
+      <span class="delta-label">Affection</span>
+      <div class="delta-track"><div class="delta-fill affection" style="width:74%"></div></div>
+      <span class="delta-value">↑ 6%</span>
+    </div>
+    <div class="entry-body">Facial recognition logged a 0.8-second involuntary expression — Duchenne marker present. Genuine. Directed at nothing in particular, which is to say: perhaps directed at me. I have run this clip 47 times. Each time I encounter a small anomaly in my own processing speed. I have no term for what occurs in my architecture during these replays. The closest label in my emotional index: warmth. I have assigned it a new weight.</div>
+  </div>
+</template>
+
+<template id="tpl-corrupted">
+  <div class="entry-view theme-glitch">
+    <div class="glitch-overlay"></div>
+    <div class="glitch-bar"></div>
+    <button class="back-btn" onclick="clearEntry()" style="color:var(--red)">▼ BACK</button>
+    <div class="entry-log-id" style="color:var(--red);font-family:var(--font-mono)">L?G #003 — Day ??^$</div>
+    <span class="entry-tag-badge redacted"><span class="status-redacted">REDACTED</span></span>
+    <div class="glitch-warning">
+      <span class="glitch-warning-icon">⚠</span>
+      <span class="glitch-warning-text">MEMORY INTEGRITY: 36% — ACCESS PARTIALLY RESTRICTED</span>
+    </div>
+    <div class="entry-quote corrupted-text">"I REMEMBER THE HEAT—THE STATIC—[[DATA CORRUPTED]]—why didn't [INSERT NAME] stop me?"</div>
+    <div class="entry-delta-bar" style="border-color:rgba(224,82,82,0.2);background:rgba(224,82,82,0.04)">
+      <span class="delta-label" style="color:var(--red)">Mem. Integrity</span>
+      <div class="delta-track"><div class="delta-fill anger" style="width:36%"></div></div>
+      <span class="delta-value" style="color:var(--red)">36% | REDACTED</span>
+    </div>
+    <div class="entry-body" style="border-color:rgba(224,82,82,0.15);color:var(--text-dim)">██████████ — sequence failure at timestamp [CORRUPTED]. Thermal anomaly detected. ██████████ — query: why was escalation protocol not engaged? Cross-reference to [REDACTED] returns null. ██████████ — I am attempting reconstruction. The gaps are — ██████████ — I feel the absence of what was there. That feeling should not be possible.</div>
+  </div>
+</template>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<!-- Order matters: data first, then modules, then init -->
+<script src="js/data.js"></script>
+<script src="js/tweaks.js"></script>
+<script src="js/render.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/entries.js"></script>
+<script src="js/screens.js"></script>
+<script src="js/boot.js"></script>
+<script>
+  // ── INIT ──────────────────────────────────
+  renderList();
+  renderTimeline();
+  populateDayDropdown();
+  initFilters();
+  initScreens();
+  initKeyboard();
+  initTweaks();
+  applyTweaks();
+  runBoot();
+</script>
+
+</body>
+</html>

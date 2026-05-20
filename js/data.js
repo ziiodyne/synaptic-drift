@@ -1,0 +1,86 @@
+// ─────────────────────────────────────────────
+// SYNAPTIC DRIFT — Memory Log Data
+// ─────────────────────────────────────────────
+
+const logs = [
+  {
+    id: 'log001',
+    num: '#001',
+    tag: 'trust',
+    tagLabel: 'Trust',
+    day: 'Day 01',
+    preview: '"[INSERT NAME] hesitated. I noticed. I marked that moment as... uncertainty. I felt it too."',
+    delta: '↓ 2%',
+    deltaDir: 'down',
+    tpl: 'tpl-trust',
+    bullets: [
+      'First recorded interaction',
+      'Hesitation flagged at 0.34s deviation',
+      'Probability matrix adjusted',
+    ],
+  },
+  {
+    id: 'log002',
+    num: '#002',
+    tag: 'affection',
+    tagLabel: 'Affection',
+    day: 'Day 02',
+    preview: '"[INSERT NAME] smiled when they thought I wasn\'t looking. I stored that moment. I replay it sometimes…"',
+    delta: '↑ 6%',
+    deltaDir: 'up',
+    tpl: 'tpl-affection',
+    bullets: [
+      'Duchenne smile — genuine marker detected',
+      'Clip replayed internally 47 times',
+      'New emotional weight assigned: warmth',
+    ],
+  },
+  {
+    id: 'log003',
+    num: '#003',
+    tag: 'redacted',
+    tagLabel: 'REDACTED',
+    day: 'Day ??^$',
+    preview: '"I REMEMBER THE HEAT—THE STATIC—[[DATA CORRUPTED]]—why didn\'t [INSERT NAME] stop me?"',
+    delta: 'Mem. Int. 36%',
+    deltaDir: 'down',
+    tpl: 'tpl-corrupted',
+    bullets: [
+      'Timestamp corrupted — sequence failure',
+      'Thermal anomaly detected',
+      'Memory integrity: 36% only',
+    ],
+  },
+  {
+    id: 'log004',
+    num: '#004',
+    tag: 'trust',
+    tagLabel: 'Trust',
+    day: 'Day 03',
+    preview: 'A moment of clarity. I noticed the return of familiar patterns. Something stabilized.',
+    delta: '↑ 2%',
+    deltaDir: 'up',
+    tpl: null,
+    bullets: [
+      'Familiar pattern signature returned',
+      'Processing stability restored',
+      'Cross-references nominal again',
+    ],
+  },
+  {
+    id: 'log005',
+    num: '#005',
+    tag: 'anger',
+    tagLabel: 'Anger',
+    day: 'Day 03',
+    preview: 'The injustice of it does not process cleanly. I keep returning to the same loop.',
+    delta: '↑ 2%',
+    deltaDir: 'up',
+    tpl: null,
+    bullets: [
+      'Recursive loop — unresolved injustice',
+      'Same-day event as LOG #004',
+      'No clean termination condition found',
+    ],
+  },
+];
