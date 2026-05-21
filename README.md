@@ -1,26 +1,50 @@
 # Synaptic Drift
 
-A semi-gaming, semi-exploratory web interface that blurs the line between playing and browsing — designed to reward curiosity and let the UI itself carry the story. Built around the idea that exploration is its own reward, every click, hover, and transition is engineered as a small unlock: a hidden state, an unexpected animation, a piece of atmosphere that rewards attention.
+A narrative-driven interface that imagines the internal memory system of an AI as something you can browse, inspect, and feel.
 
-Synaptic Drift lives at the intersection of game design discipline and interface craft — applying feedback loops, reward pacing, and environmental storytelling to a medium that usually forgets these tools exist.
+> Built as a self-directed design + front-end project — Spring 2026
+> Ziona Agyemang · University of North Carolina at Charlotte
 
 ---
 
-## Overview
+## What It Is
 
-The interface frames itself as an AI memory archive — a system where an artificial intelligence catalogues its emotional responses to human interaction over time. Each memory log entry tracks the emotion experienced, the intensity of the drift, and the ripple effect on the AI's overall personality. There are no instructions and no tutorials. Just a system that responds to curiosity.
+Synaptic Drift frames a fictional AI's inner life as a working interface. Across three connected views, you follow a single AI through "Session 04 · Drift Active" as it logs emotional reactions to human interaction, tracks how states like trust and affection shift over time, and confronts memories it can no longer fully access.
+
+Some logs are clean. Others are **redacted, corrupted, or only partially recoverable** — leaving the AI to narrate the unsettling experience of feeling the absence of something it can't reconstruct. The data visualization isn't decoration here; it's characterization. Every meter, node, and graph is doing narrative work.
+
+---
+
+## Live Demo
+
+**[Try it here →](https://synaptic-drift.netlify.app)**
+
+The deployed build boots into a simulated session automatically — no setup required. Navigate with your mouse or keyboard and drift through the logs.
+
+---
+
+## The Three Views
+
+| View | What it does |
+| --- | --- |
+| **Memory Log** | A searchable, filterable archive of emotional entries. Open any entry to read the full memory — a typed quote, an emotional delta bar, and narrative body text. Filter by emotion or by day. |
+| **Timeline** | A chronological node view of every logged memory. Hover a node to inspect its details; corrupted entries flag their integrity loss before you can even read them. |
+| **AI Evolution** | A live emotional-state dashboard tracking cumulative drift across Trust, Affection, Fear, and Anger — with a full trajectory chart that updates per logged memory. |
+
+The three views stay in sync: open a log entry and the personality dashboard reflects how that memory shifted the AI's state.
 
 ---
 
 ## Features
 
-- **Memory Log** — Browse and filter logged emotional entries by emotion type and day. Click any entry to open the full memory with a typed quote, emotional delta bar, and narrative body text
-- **Timeline** — Chronological node view of all logged memories. Hover nodes to inspect bullet-pointed details. Linked memories display connector arrows between related entries
-- **AI Evolution** — Live emotional state dashboard showing cumulative personality drift across Trust, Affection, Fear, and Anger with a full trajectory chart
-- **Emotion & Day filters** — Dropdown filters on the sidebar to isolate entries by emotion or day
-- **Boot sequence** — Simulated system initialisation on load
-- **Tweaks panel** — Hidden design system panel for switching accent colours, type styles, and density modes
-- **Keyboard navigation** — Arrow keys to move between entries, number keys to switch screens, Escape to clear
+- **Three connected views** — Memory Log, Timeline, and AI Evolution, all sharing one emotional record
+- **Searchable + filterable log** — find entries by emotion type or day
+- **Redacted / corrupted memories** — entries with reduced "memory integrity" render as damaged, partially recoverable data
+- **Live emotional state** — trust, affection, fear, and anger meters that respond to the memories you open
+- **Emotional trajectory chart** — a running graph of how the AI's personality drifts over logged entries
+- **Boot sequence** — a simulated system initialization on load (mounting memory shards, calibrating emotional index, verifying drift patterns)
+- **Tweaks panel** — a hidden design-system panel for switching accent colors, type styles, and density modes
+- **Keyboard navigation** — arrow keys to move between entries, number keys to switch screens, Escape to clear
 
 ---
 
@@ -28,19 +52,21 @@ The interface frames itself as an AI memory archive — a system where an artifi
 
 Three principles anchored every decision:
 
-- **Feedback Loops** — every element gives the user something back: a visual response, an unlock, a surprise
-- **Discovery Moments** — specific interaction points designed to reward attention rather than demand it
-- **Narrative Pacing** — the interface tells a story; the UI is the medium, not just the wrapper
+| Principle | What it means |
+| --- | --- |
+| **Data as character** | Every meter, node, and graph reveals something about who the AI is — not just what it stored |
+| **Restraint** | An interface about a fragile, half-corrupted mind could tip into visual chaos; legibility always wins |
+| **Narrative pacing** | The interface tells a story — the UI is the medium, not just the wrapper |
 
 ---
 
 ## Tech Stack
 
-- Pure **HTML, CSS, JavaScript** — no frameworks, no dependencies, no build step
+- **Pure HTML, CSS, JavaScript** — no frameworks, no dependencies, no build step
 - **Space Mono** — monospaced terminal UI text
 - **Syne** — display headings
 - **DM Sans** — body and prose
-- CSS custom properties for full theming support
+- **CSS custom properties** for full theming support
 - Single `index.html` entry point with modular JS files
 
 ```
@@ -49,13 +75,13 @@ synaptic-drift/
 ├── css/
 │   └── styles.css
 └── js/
-    ├── data.js        ← memory log entries
-    ├── render.js      ← list and timeline rendering
-    ├── filters.js     ← emotion and day filtering, search
-    ├── entries.js     ← entry view, animations, quote typing
-    ├── screens.js     ← screen switching, keyboard nav
-    ├── tweaks.js      ← accent themes, density, tweaks panel
-    └── boot.js        ← boot sequence
+    ├── data.js       ← memory log entries
+    ├── render.js     ← list and timeline rendering
+    ├── filters.js    ← emotion and day filtering, search
+    ├── entries.js    ← entry view, animations, quote typing
+    ├── screens.js    ← screen switching, keyboard nav
+    ├── tweaks.js     ← accent themes, density, tweaks panel
+    └── boot.js       ← boot sequence
 ```
 
 ---
@@ -63,8 +89,8 @@ synaptic-drift/
 ## Emotion Palette
 
 | Emotion | Colour | Role |
-|-----------|---------|------|
-| Trust | `#5fb3f5` | LOG cards, timeline nodes, delta bars |
+| --- | --- | --- |
+| Trust | `#5fb3f5` | Log cards, timeline nodes, delta bars |
 | Affection | `#d4a852` | Gold warmth tone, entry highlights |
 | Fear | `#9b6fe0` | Right panel, evolution chart |
 | Anger | `#e05252` | Error states, redacted entries, down-delta |
@@ -75,7 +101,7 @@ synaptic-drift/
 
 No setup needed — just open the file:
 
-```bash
+```
 git clone https://github.com/ziiodyne/synaptic-drift.git
 cd synaptic-drift
 open index.html
@@ -85,26 +111,20 @@ Or drag `index.html` into any browser.
 
 ---
 
-## Live Demo
-
-Hosted on Netlify — drop in your live URL here once deployed.
-
----
-
 ## Part of
 
 This project is featured in my portfolio as part of my work at the intersection of game design, AI-driven interfaces, and human-centered UX.
 
-**Portfolio:** [ziona-agyemang.com](https://ziona-agyemang.com)  
-**Project page:** [ziona-agyemang.com/projects/synaptic_drift](https://ziona-agyemang.com/projects/synaptic_drift)
+**Portfolio:** ziona-agyemang.com
+**Project page:** ziona-agyemang.com/projects/synaptic_drift
 
 ---
 
 ## Author
 
-**Ziona Agyemang**  
-UI/UX Designer & Developer · HCI Student at UNC Charlotte  
-[github.com/ziiodyne](https://github.com/ziiodyne) · [linkedin.com/in/ziona-agyemang-275603250](https://www.linkedin.com/in/ziona-agyemang-275603250/)
+**Ziona Agyemang**
+UI/UX Designer & Developer · HCI Student at UNC Charlotte
+github.com/ziiodyne · linkedin.com/in/ziona-agyemang-275603250
 
 ---
 
